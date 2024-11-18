@@ -19,3 +19,39 @@
 // function as expected. There are many ways to accomplish this task, but you will need
 // to at minimum add listeners to each link and toggle the display of the tab contents.
 // Hint: display: none; hides an element, and display: block; will bring it
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Balloon
+  
+    // Get the balloon element by its ID
+    let balloon = document.getElementById("balloon");
+    // Set the initial font size for the balloon
+    let currentSize = 20; // Initial font size in px
+  
+    // Add an event listener for keydown events on the window
+    window.addEventListener("keydown", function(event) {
+      // Check if the pressed key is the up arrow
+      if (event.key === "ArrowUp") {
+        event.preventDefault(); // Prevent the default scrolling behavior
+        currentSize *= 1.1; // Increase the size by 10%
+        // Check if the balloon size exceeds the explosion limit/threshold
+        if (currentSize > 100) { // explosion size limit
+          balloon.textContent = "💥"; // Changes the balloon to explosion emoji
+          // Remove the event listener to stop further size changes
+          window.removeEventListener("keydown", arguments.callee);
+        } else {
+          // Set the new font size for the balloon
+          balloon.style.fontSize = currentSize + "px";
+        }
+      } else if (event.key === "ArrowDown") {
+        event.preventDefault(); // Prevent the default scrolling behavior
+        currentSize *= 0.9; // Decrease size by 10%
+        // Set the new font size for the balloon
+        balloon.style.fontSize = currentSize + "px";
+      }
+    });
+  
+// tabbed layout 
+
+//
+let tabs = 
