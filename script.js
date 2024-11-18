@@ -53,5 +53,30 @@ document.addEventListener("DOMContentLoaded", function() {
   
 // tabbed layout 
 
-//
-let tabs = 
+//gets all the tabs links
+let tabs = document.querySelectorAll("#tabbed-layout ul li a");
+// get all the tab content divs
+let contents = documents.querySelectorAll("tabbed-contents > div");
+
+// function to show the content of the selected tab
+function showTab(tabId) {
+    // Hides all of the tab content
+    document.getElementById(tabId).style.display = "block";
+
+}
+
+// add clicke event listeners to each tab link
+tabs.forEach(tab => {
+    tab.addEventListener("click", function(event) { // function event is click
+        event.preventDefault(); // prevents the default link behavior
+        // Get the ID of the selected tab content
+        let tabID = tab.id.replace("Link", "");
+        // Show the selected tab content
+        showTab(tabId);
+    });
+});
+
+//Show the first tab content by default
+    showTab("tab1");
+        
+});
